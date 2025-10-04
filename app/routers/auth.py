@@ -1,12 +1,15 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from fastapi import Request
 from app.core.db import get_db
 from app.schemas import auth as schemas
 from app.services import auth as service
 from app.utils import jwt as jwt_utils
 from app.models.user import User
+
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -15,6 +18,8 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 # HTTPBearer for refresh token
 security = HTTPBearer()
+
+limiter = Limiter(key_func=get_remote_address)
 
 
 async def get_current_user(
@@ -71,7 +76,9 @@ async def register(
 
 
 @router.post("/login", response_model=schemas.TokenResponse)
+@limiter.limit("5/minute") 
 async def login(
+    request: Request,
     credentials: schemas.UserLogin,  # Simple JSON body
     db: AsyncSession = Depends(get_db)
 ):
