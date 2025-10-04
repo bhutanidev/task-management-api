@@ -56,7 +56,6 @@ async def create_task(
 
 @router.get("", response_model=List[schemas.TaskResponse], dependencies=[Depends(validate_query_params)])
 async def list_tasks(
-    request: Request,
     status_filter: Optional[TaskStatus] = Query(None, alias="status"),
     priority_filter: Optional[TaskPriority] = Query(None, alias="priority"),
     category_id: Optional[UUID] = Query(None, alias="category"),
