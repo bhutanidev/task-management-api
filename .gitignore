@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.log
+*.sqlite3
+db.sqlite3
+.env
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+.eggs/
+.installed.cfg
+*.manifest
+*.spec
+
+# Virtual environments
+*.env
+*.venv
+Pipfile.lock
+poetry.lock
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+.coverage
+.tox/
+.nox/
+.cache/
+pytest_cache/
+htmlcov/
+.mypy_cache/
+.pytest_cache/
+.pyre/
+.dmypy.json
+cython_debug/
+
+# Docker
+*.pid
+docker-compose.override.yml
+
