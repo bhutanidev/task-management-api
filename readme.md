@@ -22,7 +22,6 @@ A production-ready Task Management REST API built with FastAPI, featuring JWT au
 - **Authentication**: JWT tokens with bcrypt password hashing
 - **Validation**: Pydantic v2 with custom validators
 - **Migrations**: Alembic
-- **Testing**: pytest with async support
 - **Containerization**: Docker & Docker Compose
 
 ## Project Structure
