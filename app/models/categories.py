@@ -12,8 +12,8 @@ class Category(Base):
     __tablename__ = "categories"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
-    name = Column(String(100), unique=True, nullable=False)  # Global categories
-    color = Column(String(7), nullable=True)  # Hex color code
+    name = Column(String(100), unique=True, nullable=False)
+    color = Column(String(7), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     # Relationships
